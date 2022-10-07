@@ -17,6 +17,7 @@ function App() {
         },
         {
           path: '/home',
+          loader: () => fetch('products.json'),
           element: <Home></Home>
         },
         {
