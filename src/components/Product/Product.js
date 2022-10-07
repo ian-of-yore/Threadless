@@ -5,9 +5,9 @@ const Product = ({ product }) => {
     const { price, picture, name, gender } = product;
 
     return (
-        <div className='bg-white rounded-md border-2 border-gray-800 shadow-lg hover:shadow-xl hover:border-orange-700'>
+        <div className='bg-white rounded-md border-2 border-gray-800 shadow-2xl'>
             <div>
-                <img className='h-96 w-full rounded-md' src={picture} alt="" />
+                <img className='h-72 border-2 w-full rounded-md' src={picture} alt="" />
             </div>
             <div className='text-start ml-10 my-4 p-1'>
                 <p className='text-2xl font-semibold'>Name: {name}</p>
