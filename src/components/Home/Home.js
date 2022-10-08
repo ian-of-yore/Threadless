@@ -1,10 +1,28 @@
 import React from 'react';
+import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 
 const Home = () => {
     const products = useLoaderData();
+    const [cart, setCart] = useState([]);
+
+    const handleAddToCart = (product) => {
+        const exists = cart.find(produc => produc._id === product._id);
+        if (exists) {
+            alert("This product is already added to the Cart!")
+        }
+        else {
+            const newCart = [...cart, product];
+            setCart(newCart);
+        }
+    }
+
+    const handleRemoveFromCart = (product) => {
+        const remainingProducts = cart.filter(produc => produc._id !== product._id);
+        setCart(remainingProducts)
+    }
 
 
     return (
@@ -16,11 +34,12 @@ const Home = () => {
                         products.map(product => <Product
                             key={product._id}
                             product={product}
+                            handleAddToCart={handleAddToCart}
                         ></Product>)
                     }
                 </div>
                 <div className='grid col-span-1'>
-                    <Cart></Cart>
+                    <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart}></Cart>
                 </div>
             </div>
         </div>

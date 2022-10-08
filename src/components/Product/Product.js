@@ -1,7 +1,7 @@
 import React from 'react';
+import { useState } from 'react';
 
-const Product = ({ product }) => {
-    console.log(product)
+const Product = ({ product, handleAddToCart }) => {
     const { price, picture, name, gender } = product;
 
     return (
@@ -14,7 +14,7 @@ const Product = ({ product }) => {
                 <p className='text-lg font-medium'>Price: ${price}</p>
                 <p>Gender: {gender}</p>
             </div>
-            <button className='bg-orange-400 w-full h-10 text-lg font-medium hover:bg-orange-600 hover:text-white'>Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)} className='bg-orange-400 w-full h-10 text-lg font-medium hover:bg-orange-600 hover:text-white'>Add to Cart</button>
         </div>
     );
 };
